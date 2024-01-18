@@ -1,3 +1,4 @@
+import os
 def number_of_lines(folder_name):
     with open(folder_name, 'r') as folder:
         line_counts = sum(1 for satir in folder)
@@ -17,13 +18,18 @@ def remove_line(folder_name, line_for_remove):
     else:
         print("The row in the specified row is not found in the folder.")
 
+current_directory = os.getcwd()
+
+file_path = os.path.realpath(__file__)
+folder_path = os.path.dirname(file_path)
+
 def main():
 
-    folder_name = "1.txt"
+    folder_name = folder_path+"\\1.txt"
     numberforfirst = number_of_lines(folder_name)
     
-    firsttxtline = "1.txt"
-    secondtxtline = "2.txt"
+    firsttxtline = folder_path+"\\1.txt"
+    secondtxtline = folder_path+"\\2.txt"
 
     with open(firsttxtline, "r") as folder:
         firstlines = folder.readlines()
