@@ -9,8 +9,8 @@ def remove_line(folder_name, line_for_remove):
     with open(folder_name, 'r') as folder:
         clines = folder.readlines()
 
-    if 0 <= line_for_remove <= len(clines):
-        del clines[line_for_remove]  
+    if 0 < line_for_remove <= len(clines):
+        del clines[line_for_remove-1]  
 
         with open(folder_name, 'w') as folder:
             folder.writelines(clines)
@@ -43,12 +43,14 @@ def main():
 
     if not secondtxtlines:
         print("folder format is not suitable. The loop is terminating.")
-        return 
-   
+        return
+    print(numberforfirst)
+    
     while numberforfirst > 0:
 
         firsttxt = firstlines[numberforfirst-1].strip().split(',')
-        numberforsecond = number_of_lines("2.txt")
+        numberforsecond = number_of_lines(secondtxtline)
+        print(numberforsecond)
         
         while numberforsecond > 0:
 
@@ -56,7 +58,7 @@ def main():
             
             if str(firsttxt[0]) == str(secondtxt[0]):
                 
-                remove_line(folder_name, numberforfirst-1)
+                remove_line(folder_name, numberforfirst)
 
             numberforsecond = numberforsecond - 1
 
