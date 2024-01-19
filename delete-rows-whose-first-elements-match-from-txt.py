@@ -20,10 +20,12 @@ def remove_line(folder_name, line_for_remove):
 
 current_directory = os.getcwd()
 
-file_path = os.path.realpath(__file__)
-folder_path = os.path.dirname(file_path)
+
 
 def main():
+
+    file_path = os.path.realpath(__file__)
+    folder_path = os.path.dirname(file_path)
 
     folder_name = folder_path+"\\1.txt"
     numberforfirst = number_of_lines(folder_name)
