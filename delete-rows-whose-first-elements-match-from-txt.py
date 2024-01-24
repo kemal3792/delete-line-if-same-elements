@@ -1,5 +1,6 @@
 import os
 import time
+
 def number_of_lines(folder_name):
     with open(folder_name, 'r') as folder:
         line_counts = sum(1 for satir in folder)
