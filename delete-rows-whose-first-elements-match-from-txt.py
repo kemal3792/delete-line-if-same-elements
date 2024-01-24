@@ -1,24 +1,23 @@
 import os
+import time
 def number_of_lines(folder_name):
     with open(folder_name, 'r') as folder:
         line_counts = sum(1 for satir in folder)
     return line_counts
 
 def remove_line(folder_name, line_for_remove):
-
     with open(folder_name, 'r') as folder:
         clines = folder.readlines()
 
     if 0 < line_for_remove <= len(clines):
-        del clines[line_for_remove-1]  
+        del clines[line_for_remove - 1]
 
         with open(folder_name, 'w') as folder:
             folder.writelines(clines)
         print(f"{line_for_remove}. line deleted.")
     else:
-        print("The row in the specified row is not found in the folder.")
+        print("The specified row is not found in the folder or invalid row number.")
 
-current_directory = os.getcwd()
 
 
 
@@ -26,12 +25,14 @@ def main():
 
     file_path = os.path.realpath(__file__)
     folder_path = os.path.dirname(file_path)
-
-    folder_name = folder_path+"\\1.txt"
+    
+    
+    folder_name = "C:\\python-tests\\1.txt"
     numberforfirst = number_of_lines(folder_name)
     
-    firsttxtline = folder_path+"\\1.txt"
-    secondtxtline = folder_path+"\\2.txt"
+    
+    firsttxtline = "C:\\python-tests\\1.txt"
+    secondtxtline = "C:\\python-tests\\2.txt"
 
     with open(firsttxtline, "r") as folder:
         firstlines = folder.readlines()
@@ -54,15 +55,17 @@ def main():
         numberforsecond = number_of_lines(secondtxtline)
         print(numberforsecond)
         
-        while numberforsecond > 0:
+        while numberforsecond >= 0:
 
             secondtxt = secondtxtlines[numberforsecond-1].strip().split(',')
             
-            if str(firsttxt[0]) == str(secondtxt[0]):
-                
+            if (firsttxt[0]) == (secondtxt[0]):
                 remove_line(folder_name, numberforfirst)
+                numberforsecond = 0
+            else:
 
-            numberforsecond = numberforsecond - 1
+                numberforsecond = numberforsecond - 1
+
 
         numberforfirst = numberforfirst - 1
 
